@@ -10,6 +10,9 @@ def clear():
 
 
 def build_cells(width, height):
+    '''
+    Makes the cells for the map
+    '''
     cells = []
     for y in range(height):
         for x in range(width):
@@ -18,6 +21,9 @@ def build_cells(width, height):
 
 
 def get_locations(cells):
+    '''
+    Make the player, door, and monster appear in different random locations
+    ...
     monster = random.choice(cells)
     door = random.choice(cells)
     player = random.choice(cells)
@@ -29,6 +35,9 @@ def get_locations(cells):
 
 
 def get_moves(player):
+    '''
+    Show and return the available moves for the player
+    '''
     x, y = player
     moves = ['LEFT', 'RIGHT', 'UP', 'DOWN']
     if x == 0:
@@ -43,6 +52,9 @@ def get_moves(player):
 
 
 def move_player(player, move):
+    '''
+    moves the player to available directions
+    '''
     x, y = player['location']
     player['path'].append((x, y))
     if move == 'LEFT':
@@ -57,6 +69,9 @@ def move_player(player, move):
 
 
 def draw_map(cells):
+    '''
+    Shows the player and his/her footsteps in the map
+    '''
     print(' _'*GAME_DIMENSIONS[0])
     row_end = GAME_DIMENSIONS[0]
     tile = '|{}'
@@ -77,6 +92,9 @@ def draw_map(cells):
                 print(tile.format('_|'))
 
 def play():
+    '''
+    runs the game loop
+    '''
     cells = build_cells(*GAME_DIMENSIONS)
     monster, door, player['location'] = get_locations(cells)
 
