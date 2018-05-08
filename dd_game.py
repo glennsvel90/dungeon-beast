@@ -1,3 +1,7 @@
+"""Dungeon Game
+Escape from the dungeon. Try to find the hidden door and escape. But be careful! There is beast hiding somewhere inside!
+"""
+
 import os
 import random
 
@@ -12,8 +16,13 @@ def clear():
 
 
 def build_cells(width, height):
-    ''' Make the cells for the map '''
+    """ Create and return a 'width' x 'height' grid of two-tuples, making the cells for the map.
     
+    >>> cells = build_cells(2, 2)
+    >>> len(cells)
+    4
+    
+    """
     cells = []
     for y in range(height):
         for x in range(width):
@@ -22,8 +31,16 @@ def build_cells(width, height):
 
 
 def get_locations(cells):
-    """ Make the player, door, and monster appear in different random locations """
+    """ Make the player, door, and monster appear in different random locations
     
+    >>> cells = build_cells(3, 3)
+    >>> m, d, p = get_locations(cells)
+    >>> m != d and d != p
+    True
+    >>> d in cells
+    True
+    
+    """
     monster = random.choice(cells)
     door = random.choice(cells)
     player = random.choice(cells)
